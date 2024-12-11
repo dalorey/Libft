@@ -6,14 +6,14 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/06 14:06:45 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:44:02 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>	// printf;
 #include <ctype.h>	// isalpha;
-#include <string.h>	// strlen; memcpy; memmove;
+#include <string.h>	// strlen; memcpy; memmove; strlcpy;
 
 int	main(void)
 {
@@ -121,7 +121,7 @@ int	main(void)
 	printf("str2 after memcpy '%s'\n", str2);
 	printf("des2 after memcpy '%s'\n", des2);
 
-*/
+
 	// Test ft_memmove()
 	//char str1[20] = "     ABCDEFGHIJ     ";
 	char *str1 = "thanks to @apellicc for this test !\r\n";
@@ -142,6 +142,38 @@ int	main(void)
 //	memmove(des2, &str2[5], strlen(str2));
 	memmove("", "" - 1, 0);
 	printf("str2  after memmove '%s'\n", str2);
+
+
+	// Test ft_strlcpy()
+	char src[] = "Hello, world!";
+	char dst[10]; // Buffer smaller than src
+	printf("Source: '%s'\n", src);
+	printf("Destination: '%s'\n", dst);
+
+	size_t result = ft_strlcpy(dst, src, sizeof(dst) - 4);
+
+	printf("Source: '%s'\n", src);
+	printf("Destination: '%s'\n", dst);
+	printf("Length of src: '%zu'\n", result);
+
+	if (result >= sizeof(dst)) {
+		printf("Warning: Truncation occurred. Needed %zu bytes.\n", result);
+	}
+*/
+
+	// Test ft_strlcat()
+	char dst[] = "";
+	char src[] = "the cake is a lie !\0I'm hidden lol\r\n";
+	printf("Source: '%s'\n", src);
+	printf("Destination: '%s'\n", dst);
+	printf("size of dst  : '%zu'\n", ft_strlen(dst));
+	printf("size of src  : '%zu'\n", ft_strlen(src));
+
+	size_t result = ft_strlcat(dst, src, ft_strlen(src));
+
+	printf("Source: '%s'\n", src);
+	printf("Destination: '%s'\n", dst);
+	printf("Length of src: '%zu'\n", result);
 
 
 	// END of tests

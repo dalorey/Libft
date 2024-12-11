@@ -6,7 +6,7 @@
 #    By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 07:25:06 by dlorenzo          #+#    #+#              #
-#    Updated: 2024/12/06 09:49:04 by dlorenzo         ###   ########.fr        #
+#    Updated: 2024/12/11 18:03:05 by dlorenzo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LFLAGS = -L. -lft
 
 # Files
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-	ft_strlen.c \
+	ft_strlen.c ft_strlcpy.c ft_strlcat.c \
 	ft_bzero.c ft_memset.c ft_memcpy.c ft_memmove.c
 OBJ = $(SRC:.c=.o)
 
