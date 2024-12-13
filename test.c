@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/11 19:44:02 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:40:37 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int	main(void)
 	if (result >= sizeof(dst)) {
 		printf("Warning: Truncation occurred. Needed %zu bytes.\n", result);
 	}
-*/
+
 
 	// Test ft_strlcat()
 	char dst[] = "";
@@ -174,7 +174,17 @@ int	main(void)
 	printf("Source: '%s'\n", src);
 	printf("Destination: '%s'\n", dst);
 	printf("Length of src: '%zu'\n", result);
+*/
+	// Test ft_toupper() && ft_tolower()
+	char min = 'l';
+	char may = 'L';
+	char nac1 = '0';
+	char nac2 = '*';
 
+	printf("min: '%c' - ft_toupper: '%c'\n", min, ft_toupper(min));
+	printf("may: '%c' - ft_tolower: '%c'\n", may, ft_tolower(may));
+	printf("nac1: '%c' - ft_toupper: '%c'\n", nac1, ft_toupper(nac1));
+	printf("nac2: '%c' - ft_tolower: '%c'\n", nac2, ft_tolower(nac2));
 
 	// END of tests
 	return (0);
