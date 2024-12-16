@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 15:33:23 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/13 07:12:34 by dlorenzo         ###   ########.fr       */
+/*   Created: 2024/12/16 10:29:29 by dlorenzo          #+#    #+#             */
+/*   Updated: 2024/12/16 18:10:44 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strrchr(const char *src, int c)
 {
 	const unsigned char	*s = (unsigned char *)src;
-	unsigned char		*d;
-	size_t				dst_len;
-	size_t				src_len;
-	size_t				i;
+	const unsigned char	*t = NULL;
+	int					i;
 
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if (size < dst_len)
-		return (size + src_len);
-	if (size != 0)
+	i = 0;
+	while (s[i])
 	{
-		d = (unsigned char *)dst;
-		i = 0;
-		while ((dst_len + i < size - 1) && (s[i] != 0))
-		{
-			d[dst_len + i] = s[i];
-			i++;
-		}
-		d[dst_len + i] = '\0';
+		if (s[i] == (unsigned char)c)
+			t = (const unsigned char *)(s + i);
+		i++;
 	}
-	return (dst_len + src_len);
+	if (s[i] == (unsigned char)c)
+		t = (const unsigned char *)(s + i);
+	return ((char *)t);
 }
