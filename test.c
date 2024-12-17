@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/16 19:03:06 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/17 14:52:20 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <ctype.h>	// isalpha;
 #include <string.h>	// strlen; memcpy; memmove; strlcpy;
 #include <assert.h> // assert;
+#include <stdlib.h> // atoi;
+#include <stdint.h> // SIZE_MAX;
 
 void	test_ft_memchr(const void *src, int c, size_t n)
 {
@@ -59,6 +61,14 @@ void test_ft_memcmp(const void *s1, const void *s2, size_t n)
     } else {
         printf("❌ Test FAILED. Los resultados no coinciden.\n");
     }
+}
+
+void print_test_result(const char *desc, int passed)
+{
+    if (passed)
+        printf("[OK]   %s\n", desc);
+    else
+        printf("[FAIL] %s\n", desc);
 }
 
 int	main(void)
@@ -400,14 +410,34 @@ int	main(void)
     printf("\nTest con NULL (si manejas punteros NULL):\n");
     test_ft_memcmp(NULL, mem2, 0);
     test_ft_memcmp(mem1, NULL, 0);
-*/
+
 
 // Test ft_strnstr()
-    //Test 1: Comparar 2 cadenas diferentes con len = 0 o 1
-    char str1[] = "abc";
-    char str2[] = "xyz";
-    char *out = ft_strnstr(str1, str2, 1);
+    //Test 0: Comparar 2 cadenas
+    // char str1[] = "is there a nyacat ?";
+    // char str2[] = "is there a nyacat ?";
+    // char *out = ft_strnstr(str1, str2, 20);
+	// printf("strlen(str2) = %zu\n", strlen(str2));
+	// printf("ft_strnstr Output #1: '%s'\n", out);
+
+    //Test 0: Comparar 2 cadenas con len = 15
+    // char str1[] = "lorem ipsum dolor sit amet";
+    // char str2[] = "dolor";
+    // char *out = ft_strnstr(str1, str2, 15);
+	// printf("ft_strnstr Output #1: '%s'\n", out);
+
+    //Test 0: Comparar 2 cadenas
+    char str1[] = "MZIRIBMZIRIBMZE123";
+    char str2[] = "MZIRIBMZE";
+    char *out = ft_strnstr(str1, str2, strlen(str2));
+	printf("strlen(str2) = %zu\n", strlen(str2));
 	printf("ft_strnstr Output #1: '%s'\n", out);
+
+    //Test 1: Comparar 2 cadenas diferentes con len = 0 o 1
+    // char str1[] = "abc";
+    // char str2[] = "xyz";
+    // char *out = ft_strnstr(str1, str2, 1);
+	// printf("ft_strnstr Output #1: '%s'\n", out);
 
     // Test 2: Comparar 2 cadenas vacias con len = 0
     // char str1[] = "";
@@ -418,7 +448,7 @@ int	main(void)
     // Test 3: Comparar 2 cadenas con len = 4, 5 o 6
     // char str1[] = "aaxx";
     // char str2[] = "xx";
-    // char *out = ft_strnstr(str1, str2, 4);
+    // char *out = ft_strnstr(str1, str2, 1);
 	// printf("ft_strnstr Output #3: '%s'\n", out);
 
     // Test 4: Comparar 2 cadenas con len = 2 o 3
@@ -438,6 +468,183 @@ int	main(void)
     // char str2[] = "abc";
     // char *out = ft_strnstr(str1, str2, 7);
 	// printf("ft_strnstr Output #6: '%s'\n", out);
+
+
+// Test ft_strnstr()
+    const char *str1 = "   -1234abc";
+    const char *str2 = "5678";
+    const char *str3 = "   +42";
+    const char *str4 = "   0";
+    const char *str5 = "NotANumber";
+
+
+    printf("NUMBER 1: %s\n", str1);  // Salida: -1234
+    printf("[FT] Resultado 1: %d\n", ft_atoi(str1));  // Salida: -1234
+    printf("[std]Resultado 1: %d\n", atoi(str1));  // Salida: -1234
+    printf("NUMBER 2: %s\n", str2);  // Salida: 5678
+    printf("[FT] Resultado 2: %d\n", ft_atoi(str2));  // Salida: 5678
+	printf("[std]Resultado 2: %d\n", atoi(str2));  // Salida: 5678
+    printf("NUMBER 3: %s\n", str3);  // Salida: 42
+    printf("[FT] Resultado 3: %d\n", ft_atoi(str3));  // Salida: 42
+    printf("[std]Resultado 3: %d\n", atoi(str3));  // Salida: 42
+    printf("NUMBER 4: %s\n", str4);  // Salida: 0
+    printf("[FT] Resultado 4: %d\n", ft_atoi(str4));  // Salida: 0
+	printf("[std]Resultado 4: %d\n", atoi(str4));  // Salida: 0
+    printf("NUMBER 5: %s\n", str5);  // Comportamiento indefinido (no numérico)
+    printf("[FT] Resultado 5: %d\n", ft_atoi(str5));  // Comportamiento indefinido (no numérico)
+    printf("[std]Resultado 5: %d\n", atoi(str5));  // Comportamiento indefinido (no numérico)
+
+
+// Test ft_calloc()
+    printf("=== Test de calloc y ft_calloc ===\n");
+
+	// Test 0
+    int *arr1; // ft_ function
+	int *arr2; // std function
+    size_t n = 5;  // Número de elementos
+    // Asigna memoria para 5 enteros
+    arr1 = (int *)ft_calloc(n, sizeof(int));
+	arr2 = (int *)calloc(n, sizeof(int));
+    if (arr1 == NULL)
+	{
+        printf("[ft_] Error: No se pudo asignar memoria\n");
+        return 1;
+    }
+	if (arr2 == NULL)
+	{
+		printf("[std] error: No se pudo asignar memoria\n");
+		return 1;
+	}
+    // Mostrar valores inicializados
+    for (size_t i = 0; i < n; i++)
+	{
+        printf("[ft_] arr1[%zu] = %d\n", i, arr1[i]);  // Todos los valores serán 0
+    }
+	for (size_t i = 0; i < n; i++)
+	{
+		printf("[std] arr2[%zu] = %d\n", i, arr2[i]);	// Todos los valores serán 0
+	}
+    // Liberar memoria
+    free(arr1);
+	free(arr2);
+
+    // Test 1: Comprobar si calloc y ft_calloc devuelven memoria inicializada a cero
+    // size_t n = 5;
+    size_t size = sizeof(int);
+
+    int *orig = calloc(n, size);
+    int *ft = ft_calloc(n, size);
+
+    int test1_passed = 1;
+    for (size_t i = 0; i < n; i++) {
+        if (orig[i] != 0 || ft[i] != 0) {
+            test1_passed = 0;
+            break;
+        }
+    }
+    print_test_result("Memoria inicializada a cero", test1_passed);
+
+    // Test 2: Comprobar si ambas funciones asignan la misma cantidad de memoria
+    size_t alloc_size = n * size;
+    int test2_passed = memcmp(orig, ft, alloc_size) == 0;
+    print_test_result("Asignación de la misma cantidad de memoria", test2_passed);
+
+    // Test 3: Comprobar que ambas funciones devuelven NULL en caso de asignación inválida
+    void *orig_invalid = calloc(SIZE_MAX, SIZE_MAX);
+	void *ft_invalid = ft_calloc(SIZE_MAX, SIZE_MAX);
+
+    int test3_passed = (orig_invalid == NULL && ft_invalid == NULL);
+    print_test_result("Manejo de asignación inválida", test3_passed);
+
+    // Liberar memoria
+    free(orig);
+    free(ft);
+
+    printf("=== Fin de pruebas ===\n");
+
+
+// Test ft_strdup()
+    printf("=== Test de strdup y ft_strdup ===\n");
+
+	// Test 0
+	const char *test1 = "Hola Mundo";	// Caso normal
+	char *result1_ft_ = ft_strdup(test1);
+	printf("result1_ft_: '%s'\n", result1_ft_);
+	char *result1_std = ft_strdup(test1);
+	printf("result1_std: '%s'\n", result1_std);
+	free(result1_ft_);
+	free(result1_std);
+
+	const char *test2 = "";				// Cadena vacía
+	char *result2_ft_ = ft_strdup(test2);
+	printf("result2_ft_: '%s'\n", result2_ft_);
+	char *result2_std = strdup(test2);
+	printf("result2_std: '%s'\n", result2_std);
+	free(result2_ft_);
+	free(result2_std);
+
+	// const char *test3 = NULL;			// Caso NULL (verificación manual)
+	// char *result3_ft_ = ft_strdup(test3);
+	// printf("result3_ft_: '%s'\n", result3_ft_);
+	// char *result3_std = strdup(test3);
+	// printf("result3_std: '%s'\n", result3_std);
+	// free(result3_ft_);
+	// free(result3_std);
+
+	// Test 1
+	const char *test_cases[] = {
+        "Hola Mundo",   // Caso normal
+        "",             // Cadena vacía
+        NULL            // Caso NULL (verificación manual)
+    };
+
+    for (int i = 0; i < 3; i++) {
+        const char *input = test_cases[i];
+        char *result_std = NULL;
+        char *result_ft = NULL;
+
+        // Verificamos si la entrada no es NULL antes de llamar a strdup
+        if (input != NULL) {
+            result_std = strdup(input);
+            result_ft = ft_strdup(input);
+
+            // Comprobación manual
+            if (result_std == NULL || result_ft == NULL)
+			{
+                printf("Error: strdup o ft_strdup devolvió NULL para el caso %d\n", i + 1);
+            }
+			else if (strcmp(result_std, result_ft) == 0)
+			{
+                printf("Prueba %d: [PASSED]\n", i + 1);
+            }
+			else
+			{
+                printf("Prueba %d: [FAILED] - Las cadenas no coinciden.\n", i + 1);
+            }
+
+            // Liberamos la memoria si no es NULL
+            free(result_std);
+            free(result_ft);
+        }
+		else
+		{
+            // Caso NULL: ft_strdup debería devolver NULL
+            result_ft = ft_strdup(input);
+            if (result_ft == NULL)
+			{
+                printf("Prueba %d: [PASSED] - ft_strdup devolvió NULL como esperado.\n", i + 1);
+            }
+			else
+			{
+                printf("Prueba %d: [FAILED] - ft_strdup no devolvió NULL.\n", i + 1);
+                free(result_ft);  // Liberamos si hay un error inesperado
+            }
+        }
+    }
+
+	printf("=== Fin de pruebas ft_strdup ===\n");
+*/
+
 
 	// END of tests
 	return (0);
