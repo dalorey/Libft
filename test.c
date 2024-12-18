@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/17 14:52:20 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:59:38 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ void print_test_result(const char *desc, int passed)
         printf("[OK]   %s\n", desc);
     else
         printf("[FAIL] %s\n", desc);
+}
+
+void print_result(const char *desc, const char *result)
+{
+    if (result)
+        printf("%s: \"%s\"\n", desc, result);
+    else
+        printf("%s: (null)\n", desc);
 }
 
 int	main(void)
@@ -641,9 +649,29 @@ int	main(void)
             }
         }
     }
-
 	printf("=== Fin de pruebas ft_strdup ===\n");
 */
+
+// ft_substr()
+    // Caso 555: Normal operation
+    // const char *original = "Hola Mundo";
+    const char *original = "Hola";
+    char *subcadena;
+
+    printf("original: \"%s\"\n", original);
+    printf("ft_strlen(original): '%zu'\n", ft_strlen(original));
+    // Extraer "Mundo"
+    subcadena = ft_substr(original, 2, 3);
+    if (subcadena)
+    {
+        printf("Subcadena #1: \"%s\"\n", subcadena); // Salida esperada: "Mundo"
+        free(subcadena);
+    }
+
+    // Caso donde start es mayor que la longitud de la cadena
+    subcadena = ft_substr(original, 20, 5);
+    printf("Subcadena #2 fuera de rango: \"%s\"\n", subcadena); // Salida esperada: ""
+    free(subcadena);
 
 
 	// END of tests
