@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/18 17:59:38 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:50:51 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ void print_result(const char *desc, const char *result)
         printf("%s: \"%s\"\n", desc, result);
     else
         printf("%s: (null)\n", desc);
+}
+
+char to_upper_even(unsigned int index, char c) {
+    if (index % 2 == 0)
+        return (char)toupper(c);
+    return c;
 }
 
 int	main(void)
@@ -650,7 +656,7 @@ int	main(void)
         }
     }
 	printf("=== Fin de pruebas ft_strdup ===\n");
-*/
+
 
 // ft_substr()
     // Caso 555: Normal operation
@@ -673,6 +679,59 @@ int	main(void)
     printf("Subcadena #2 fuera de rango: \"%s\"\n", subcadena); // Salida esperada: ""
     free(subcadena);
 
+    // Caso donde solo copio el caracter fin de cadena '\0'
+    const char *original = "  \t \t \n   \n\n\n\t";
+    char *subcadena;
+    subcadena = ft_substr(original, 15, 1);
+    printf("Subcadena vacia: '%s'\n", subcadena); // Salida esperada: ""
+    free(subcadena);
+
+
+// ft_strjoin()
+    // Caso 1: Normal operation
+    char *str1 = "Hola ";
+    char *str2 = "Mundo";
+    char *dst;
+
+    printf("str1: '%s'\n", str1);
+    printf("str2: '%s'\n", str2);
+    dst = ft_strjoin(str1, str2);
+    printf("dest: '%s'\n", dst);
+
+// ft_strtrim()
+    // Caso 1: Normal operation
+    // char *str = ".Hola, ";
+    // char *set = "., ";
+    // char *dst;
+
+    // Caso 2: weird operation
+    char *str = "  \t \t \n   \n\n\n\t";
+    char *set = " \n\t";
+    char *dst;
+
+    printf("str:    '%s'\n", str);
+    printf("set:    '%s'\n", set);
+    dst = ft_strtrim(str, set);
+    printf("dest:   '%s'\n", dst);
+
+
+// ft_itoa()
+// char	*ft_itoa(int num)
+    int num = -2147483648;
+    // int num = 2048;
+    // int num = -1024;
+    char *str_num;
+
+    str_num = ft_itoa(num);
+    printf("[test.c] --- str_num: '%s'\n", str_num);
+*/
+// ft_strmapi()
+
+    char *result = ft_strmapi("hello world", to_upper_even);
+    if (result) {
+        printf("Result: %s\n", result);
+        free(result);
+    }
 
 	// END of tests
 	return (0);
