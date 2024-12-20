@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/20 13:36:50 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:59:08 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -748,7 +748,59 @@ int	main(void)
     printf("Original str: %s\n", str);
     ft_striteri(str, to_upper_even2);
     printf("Modified str: %s\n", str);
+
+
+// ft_putchar_fd()
+// void	ft_putchar_fd(char c, int fd)
+        // The file descriptor can represent:
+        // 0: Standard input (stdin).
+        // 1: Standard output (stdout).
+        // 2: Standard error (stderr).
+        // Or a file opened with a specific file descriptor.
+
+    ft_putchar_fd('X', 1);      // Output: X
+    ft_putchar_fd('\n', 1);
+
+    char str[] = "hello world";
+    ft_putchar_fd(str[6], 1);   // Output: w
+    ft_putchar_fd('\n', 1);
+
+
+// ft_putstr_fd()
+// void	ft_putstr_fd(char *c, int fd)
+        // The file descriptor can represent:
+        // 0: Standard input (stdin).
+        // 1: Standard output (stdout).
+        // 2: Standard error (stderr).
+        // Or a file opened with a specific file descriptor.
+
+    ft_putstr_fd("X", 1);   // Output: X
+    ft_putstr_fd("\n", 1);
+
+    char str[] = "hello world";
+    ft_putstr_fd(str, 1);   // Output: hello world
+    ft_putstr_fd("\n", 1);
+
+
+// ft_putendl_fd()
+// void ft_putendl_fd(char *s, int fd);
+    char str[] = "hello world";
+    ft_putendl_fd(str, 1);  // Outlput: hello world\n
 */
+
+// ft_putnbr_fd()
+// void ft_putnbr_fd(int n, int fd);
+    int i = -2048;
+    int j = -2147483648;
+    // -2048    -2147483648     
+    // 010000043-100000432147483647-214748364810000
+    ft_putnbr_fd(i, 1);
+    ft_putchar_fd('\n',1);
+    ft_putnbr_fd(j, 1);
+    ft_putchar_fd('\n', 1);
+
+    int k = 010000043;
+    printf("int '010000043': %d\n", k);     // Output: 2097187 !!!!!!
 
 	// END of tests
 
@@ -756,6 +808,7 @@ int	main(void)
     // // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
                                 // ---> CANNOT WRITE STRING AFTERWARDS
     // char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
+
     // printf("str: %s\n", str);     // Output: hello
 
     // printf("str points to: %c\n", *str);     // Output: h

@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:47:58 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/20 11:44:52 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:05:51 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,9 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_itoa(int num);
 char	*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 void	ft_striteri(char *str, void (*f)(unsigned int, char*));
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int num, int fd);
 
 #endif
