@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/20 19:28:30 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/20 23:01:57 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,8 +202,8 @@ int	main(void)
 
 
 // Test ft_memmove()
-	//char str1[20] = "     ABCDEFGHIJ     ";
-	char *str1 = "thanks to @apellicc for this test !\r\n";
+	char str1[20] = "     ABCDEFGHIJ     ";
+	//char *str1 = "thanks to @apellicc for this test !\r\n";
 	//char des1[0xF0];
 
 	printf("str1 before ft_memmove '%s'\n", str1);
@@ -212,8 +212,8 @@ int	main(void)
 	ft_memmove("", "" - 1, 0);
 	printf("str1  after ft_memmove '%s'\n\n", str1);
 
-	//char str2[20] = "     ABCDEFGHIJ     ";
-	char *str2 = "thanks to @apellicc for this test !\r\n";
+	char str2[20] = "     ABCDEFGHIJ     ";
+	//char *str2 = "thanks to @apellicc for this test !\r\n";
 	//char des2[0xF0];
 
 	printf("str2 before memmove '%s'\n", str2);
@@ -808,17 +808,17 @@ int	main(void)
 	// END of tests
 
 // POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    // // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
-                                // ---> CANNOT WRITE STRING AFTERWARDS
-    // char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
+    // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
+    //                       //     ---> CANNOT WRITE STRING AFTERWARDS
+    char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
 
-    // printf("str: %s\n", str);     // Output: hello
+    printf("str: %s\n", str);     // Output: hello
 
-    // printf("str points to: %c\n", *str);     // Output: h
+    printf("str points to: %c\n", *str);     // Output: h
 
-    // printf("str[1]: %c\n", str[1]);          // Output: e
-    // printf("str + 1 points to: %c\n", *(str + 1)); // Output: e
-    // printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
+    printf("str[1]: %c\n", str[1]);          // Output: e
+    printf("str + 1 points to: %c\n", *(str + 1)); // Output: e
+    printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
 // POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 	return (0);

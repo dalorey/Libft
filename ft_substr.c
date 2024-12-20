@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:03:24 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/19 17:40:33 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/20 22:54:51 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,8 @@ char	*ft_substr(const char *str, unsigned int start, size_t len)
 	if (!substr)
 		return (NULL);
 	i = 0;
-	while (i < len)
-	{
-		substr[i] = str[i + start];
-		i++;
-	}
-	substr[i] = '\0';
+	while (i++ < len)
+		substr[i-1] = str[i-1 + start];
+	substr[i-1] = '\0';
 	return ((char *)substr);
 }

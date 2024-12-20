@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:47:44 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/18 10:18:47 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/20 22:43:28 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,9 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	}
 	else if ((s < d) && (n != 0))
 	{
-		i = n - 1;
-		while (i > 0)
-		{
+		i = n;
+		while (i--)
 			d[i] = s[i];
-			i--;
-		}
-		d[i] = s[i];
 	}
 	return (d);
 }
