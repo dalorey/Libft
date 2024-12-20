@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/19 20:50:51 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/20 13:36:50 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,19 @@ void print_result(const char *desc, const char *result)
         printf("%s: (null)\n", desc);
 }
 
-char to_upper_even(unsigned int index, char c) {
+char to_upper_even(unsigned int index, char c)
+{
     if (index % 2 == 0)
-        return (char)toupper(c);
+        return (char)ft_toupper(c);
     return c;
+}
+
+void to_upper_even2(unsigned int index, char *c)
+{
+    // printf("[to_upper] str: %s\n", c);
+    // printf("[to_upper] c[%d]: %c\n", index, c[index]);
+    if (index % 2 == 0)
+        c[index] = (int)ft_toupper(c[index]);
 }
 
 int	main(void)
@@ -724,15 +733,37 @@ int	main(void)
 
     str_num = ft_itoa(num);
     printf("[test.c] --- str_num: '%s'\n", str_num);
-*/
-// ft_strmapi()
 
+
+// ft_strmapi()
     char *result = ft_strmapi("hello world", to_upper_even);
     if (result) {
         printf("Result: %s\n", result);
         free(result);
     }
 
+
+// ft_striteri()
+    char str[] = "hello world";
+    printf("Original str: %s\n", str);
+    ft_striteri(str, to_upper_even2);
+    printf("Modified str: %s\n", str);
+*/
+
 	// END of tests
+
+// POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    // // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
+                                // ---> CANNOT WRITE STRING AFTERWARDS
+    // char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
+    // printf("str: %s\n", str);     // Output: hello
+
+    // printf("str points to: %c\n", *str);     // Output: h
+
+    // printf("str[1]: %c\n", str[1]);          // Output: e
+    // printf("str + 1 points to: %c\n", *(str + 1)); // Output: e
+    // printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
+// POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
 	return (0);
 }
