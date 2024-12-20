@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/20 18:59:08 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:28:30 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -786,7 +786,7 @@ int	main(void)
 // void ft_putendl_fd(char *s, int fd);
     char str[] = "hello world";
     ft_putendl_fd(str, 1);  // Outlput: hello world\n
-*/
+
 
 // ft_putnbr_fd()
 // void ft_putnbr_fd(int n, int fd);
@@ -799,8 +799,11 @@ int	main(void)
     ft_putnbr_fd(j, 1);
     ft_putchar_fd('\n', 1);
 
-    int k = 010000043;
-    printf("int '010000043': %d\n", k);     // Output: 2097187 !!!!!!
+    int k = 010;  // A number prefixed with a 0 is interpreted as an octal constant
+    printf("Octal '10': %d\n", k);     // Output: 8 !!!!!!
+*/
+
+// ft_split()
 
 	// END of tests
 
