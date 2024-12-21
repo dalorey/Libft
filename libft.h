@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:47:58 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/20 18:05:51 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:44:26 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int num, int fd);
+char	**ft_split(char const *str, char c);
 
 #endif

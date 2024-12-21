@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/20 23:01:57 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/21 23:26:45 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,16 +276,16 @@ int	main(void)
 
 	printf("String: '%s' - Char: '%c'\n", str, c);
     if (result_ft != NULL) {
-		printf("[FT_] El carácter '%c' se encuentra en la posición: %ld\n", c, result_ft - str);
+		printf("[FT_] El caracter '%c' en posición: %ld\n", c, result_ft - str);
     } else {
-		printf("[FT_] El carácter '%c' no se encuentra en la cadena.\n\n", c);
+		printf("[FT_] El caracter '%c' no se encuentra en la cadena.\n\n", c);
     }
 
 	printf("String: '%s' - Char: '%c'\n", str, c);
     if (result != NULL) {
-        printf("El carácter '%c' se encuentra en la posición: %ld\n", c, result - str);
+        printf("El caracter '%c' en posición: %ld\n", c, result - str);
     } else {
-        printf("El carácter '%c' no se encuentra en la cadena.\n", c);
+        printf("El caracter '%c' no se encuentra en la cadena.\n", c);
     }
 
 
@@ -298,14 +298,14 @@ int	main(void)
 
 	printf("String: '%s' - Char: '%c'\n", str, c);
     if (result_ft != NULL) {
-		printf("[FT_] El carácter '%c' se encuentra en la posición: %ld\n", c, result_ft - str);
+		printf("[FT_] El caracter '%c' en posición: %ld\n", c, result_ft - str);
     } else {
 		printf("[FT_] El carácter '%c' no se encuentra en la cadena.\n\n", c);
     }
 
 	printf("String: '%s' - Char: '%c'\n", str, c);
     if (result != NULL) {
-		printf("El carácter '%c' se encuentra en la posición: %ld\n", c, result - str);
+		printf("El carácter '%c' en posición: %ld\n", c, result - str);
     } else {
         printf("El carácter '%c' no se encuentra en la cadena.\n", c);
     }
@@ -392,7 +392,7 @@ int	main(void)
     test_ft_memchr	(mem, 5, 10);  // Buscar el valor 5
     test_ft_memchr	(mem, 10, 10); // Valor 10 no existe en el bloque
 
-    // Test 6: NULL como puntero (comprobar si tu función gestiona NULL correctamente)
+    // Test 6: puntero NULL (comprobar si tu función gestiona NULL correctamente)
     test_ft_memchr	(NULL, 'A', 5);
 
 
@@ -429,7 +429,7 @@ int	main(void)
     test_ft_memcmp(mem1, mem2, 6);
 
     // Test 7: Comparar punteros NULL (si implementas protección)
-    // Nota: Si ft_memcmp no comprueba punteros NULL, este test puede dar un segfault.
+    // Nota: Si ft_memcmp no comprueba punteros NULL, test puede dar un segfault.
     printf("\nTest con NULL (si manejas punteros NULL):\n");
     test_ft_memcmp(NULL, mem2, 0);
     test_ft_memcmp(mem1, NULL, 0);
@@ -514,8 +514,8 @@ int	main(void)
     printf("[FT] Resultado 4: %d\n", ft_atoi(str4));  // Salida: 0
 	printf("[std]Resultado 4: %d\n", atoi(str4));  // Salida: 0
     printf("NUMBER 5: %s\n", str5);  // Comportamiento indefinido (no numérico)
-    printf("[FT] Resultado 5: %d\n", ft_atoi(str5));  // Comportamiento indefinido (no numérico)
-    printf("[std]Resultado 5: %d\n", atoi(str5));  // Comportamiento indefinido (no numérico)
+    printf("[FT] Resultado 5: %d\n", ft_atoi(str5));  // indefinido (no numérico)
+    printf("[std]Resultado 5: %d\n", atoi(str5));  // indefinido (no numérico)
 
 
 // Test ft_calloc()
@@ -541,17 +541,17 @@ int	main(void)
     // Mostrar valores inicializados
     for (size_t i = 0; i < n; i++)
 	{
-        printf("[ft_] arr1[%zu] = %d\n", i, arr1[i]);  // Todos los valores serán 0
+        printf("[ft_] arr1[%zu] = %d\n", i, arr1[i]);// Todos los valores serán 0
     }
 	for (size_t i = 0; i < n; i++)
 	{
-		printf("[std] arr2[%zu] = %d\n", i, arr2[i]);	// Todos los valores serán 0
+		printf("[std] arr2[%zu] = %d\n", i, arr2[i]);// Todos los valores serán 0
 	}
     // Liberar memoria
     free(arr1);
 	free(arr2);
 
-    // Test 1: Comprobar si calloc y ft_calloc devuelven memoria inicializada a cero
+    // Test 1: Comprobar si calloc y ft_calloc devuelven memoria inic a cero
     // size_t n = 5;
     size_t size = sizeof(int);
 
@@ -570,9 +570,9 @@ int	main(void)
     // Test 2: Comprobar si ambas funciones asignan la misma cantidad de memoria
     size_t alloc_size = n * size;
     int test2_passed = memcmp(orig, ft, alloc_size) == 0;
-    print_test_result("Asignación de la misma cantidad de memoria", test2_passed);
+    print_test_result("Asignación misma cantidad de memoria", test2_passed);
 
-    // Test 3: Comprobar que ambas funciones devuelven NULL en caso de asignación inválida
+    // Test 3: Comprobar ambas funciones devuelven NULL si asignación inválida
     void *orig_invalid = calloc(SIZE_MAX, SIZE_MAX);
 	void *ft_invalid = ft_calloc(SIZE_MAX, SIZE_MAX);
 
@@ -804,21 +804,90 @@ int	main(void)
 */
 
 // ft_split()
+// char **ft_split(char const *s, char c);
+
+    // char const *str = NULL;
+    // char const *str = "";
+    // char const *str = "hello!zzzzzzzz";
+    char const *str = "      split       this for   me  !       ";
+    // char const *str = "    Hola  cara";
+    char    c = ' ';
+    // char const *str = "hello!\0paco";
+    // char    c = '\0';
+    // char const *str = "Hola, mundo, 42, Malaga, Cursus";
+    // char    c = ' ';
+    printf("[main] ft_strlen(str): %zu\n", ft_strlen(str));
+    printf("[main] string:      '%s'\n", str);
+    printf("[main] delimiter:   '%c'\n", c);
+    char **result = NULL;
+
+    // Test 0 - Input str - separator '\0'
+    result = ft_split(str, c);
+
+    int i = 0;
+    while (result[i])
+    {
+        printf("[main] Word '%d': %s\n", i, result[i]);
+        // printf("[main] result[%d] address of pointer: '%p'\n", i, (void *)result[i]);
+        // free (result[i]);
+        i++;
+    }
+    free (result);
+
+    // Test 1 - Input str - separator ' '
+    // // printf("[main] result address of initial pointer: '%p'\n", (void *)result);
+    // result = ft_split(str, c);
+    // // printf("[main] result address of initial pointer: '%p'\n", (void *)result);
+
+    // Test 2 - Input str - separator ','
+    // char **result = ft_split(str, ',');
+    // if (result)
+    // {
+    //     for (int i = 0; result[i]; i++) {
+    //         printf("%s\n", result[i]);
+    //         free(result[i]);
+    //     }
+    //     free(result);
+    // }
+
+    // Test 3 - Input str - separator ' '
+    // char const *str = "Hola mundo 42 Malaga Cursus";
+    // char **result = ft_split(str, ' ');
+    // if (result)
+    // {
+    //     for (int i = 0; result[i]; i++) {
+    //         printf("%s\n", result[i]);
+    //         free(result[i]);
+    //     }
+    //     free(result);
+    // }
+
+    // Test 4 - Input str - separator ' '
+    // char const *str = "Hola, mundo, 42, Malaga, Cursus";
+    // char **result = ft_split(str, ' ');
+    // if (result)
+    // {
+    //     for (int i = 0; result[i]; i++) {
+    //         printf("%s\n", result[i]);
+    //         free(result[i]);
+    //     }
+    //     free(result);
+    // }
 
 	// END of tests
 
 // POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
-    //                       //     ---> CANNOT WRITE STRING AFTERWARDS
-    char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
+    // // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
+    // //                       //     ---> CANNOT WRITE STRING AFTERWARDS
+    // char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
 
-    printf("str: %s\n", str);     // Output: hello
+    // printf("str: %s\n", str);     // Output: hello
 
-    printf("str points to: %c\n", *str);     // Output: h
+    // printf("str points to: %c\n", *str);     // Output: h
 
-    printf("str[1]: %c\n", str[1]);          // Output: e
-    printf("str + 1 points to: %c\n", *(str + 1)); // Output: e
-    printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
+    // printf("str[1]: %c\n", str[1]);          // Output: e
+    // printf("str + 1 points to: %c\n", *(str + 1)); // Output: e
+    // printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
 // POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 	return (0);
