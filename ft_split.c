@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:24:28 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/21 23:31:23 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/22 11:12:31 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,19 @@ static char	*ft_store_word(char const *str, size_t index, size_t len)
 	return (tmp);
 }
 
+static void	ft_free_word_list(char **word_list, size_t words)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < words)
+	{
+		free(word_list[i]);
+		i++;
+	}
+	free(word_list);
+}
+
 char	**ft_split(char const *str, char c)
 {
 	size_t	i;
@@ -88,16 +101,10 @@ char	**ft_split(char const *str, char c)
 	word_list = (char **)malloc((words + 1) * sizeof(char *));
 	// printf("[split] word_list pointer address: '%p'\n", (void *)word_list);
 	if (!word_list)
-	// {
-	// 	i = 0;
-	// 	while (word_list[i] != NULL)
-	// 	{
-	// 		free(word_list[i]);
-	// 		i++;
-	// 	}
-	// 	free(word_list);
+	{
+		ft_free_word_list(word_list, j);
 	 	return (NULL);
-	// }
+	}
 	while (str[i] != '\0')
 	{
 		if (((i == 0) || (i > 0 && (str[i - 1] == c))) && (str[i] != c))
@@ -106,10 +113,17 @@ char	**ft_split(char const *str, char c)
 			// printf("[split] word_len(%zu): %zu\n", i, word_len);
 			word_list[j] = ft_store_word(str, i, word_len);
 			// printf("[split] WORD[%zu]: %s\n", j, word_list[j]);
+			if (!word_list[j])
+			{
+				ft_free_word_list(word_list, j);
+				return(NULL);
+			}
 			j++;
 		}
 		i++;
 	}
+	// printf("[split] el índice del último puntero es: &%zu\n", j);
+	// printf("[split] el índice del último puntero es: &%zu\n", words);
 	word_list[j] = NULL;
 	return (word_list);
 }
