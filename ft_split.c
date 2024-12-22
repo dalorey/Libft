@@ -6,12 +6,11 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:24:28 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/22 11:12:31 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/22 13:09:32 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>	// printf --- BORRAR!!!
 
 static size_t	ft_count_words(char const *str, char c)
 {
@@ -71,7 +70,7 @@ static char	*ft_store_word(char const *str, size_t index, size_t len)
 	return (tmp);
 }
 
-static void	ft_free_word_list(char **word_list, size_t words)
+static char	**ft_free_word_list(char **word_list, size_t words)
 {
 	size_t	i;
 
@@ -82,6 +81,7 @@ static void	ft_free_word_list(char **word_list, size_t words)
 		i++;
 	}
 	free(word_list);
+	return (NULL);
 }
 
 char	**ft_split(char const *str, char c)
@@ -95,35 +95,20 @@ char	**ft_split(char const *str, char c)
 	i = 0;
 	j = 0;
 	words = ft_count_words(str, c);
-	// printf("[split] number of words: %zu\n", words);
-	word_list = NULL;
-	// printf("[split] word_list pointer address: '%p'\n", (void *)word_list);
 	word_list = (char **)malloc((words + 1) * sizeof(char *));
-	// printf("[split] word_list pointer address: '%p'\n", (void *)word_list);
 	if (!word_list)
-	{
-		ft_free_word_list(word_list, j);
-	 	return (NULL);
-	}
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (((i == 0) || (i > 0 && (str[i - 1] == c))) && (str[i] != c))
 		{
 			word_len = ft_word_len(str, c, i);
-			// printf("[split] word_len(%zu): %zu\n", i, word_len);
 			word_list[j] = ft_store_word(str, i, word_len);
-			// printf("[split] WORD[%zu]: %s\n", j, word_list[j]);
-			if (!word_list[j])
-			{
-				ft_free_word_list(word_list, j);
-				return(NULL);
-			}
-			j++;
+			if (!word_list[j++])
+				return (ft_free_word_list(word_list, j));
 		}
 		i++;
 	}
-	// printf("[split] el índice del último puntero es: &%zu\n", j);
-	// printf("[split] el índice del último puntero es: &%zu\n", words);
 	word_list[j] = NULL;
 	return (word_list);
 }
