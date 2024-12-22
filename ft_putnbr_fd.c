@@ -6,12 +6,12 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 18:04:14 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/20 19:16:32 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/22 23:21:30 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
+#include <limits.h>	// For INT_MIN
 
 void	ft_putnbr_fd(int num, int fd)
 {

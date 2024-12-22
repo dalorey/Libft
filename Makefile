@@ -6,7 +6,7 @@
 #    By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 07:25:06 by dlorenzo          #+#    #+#              #
-#    Updated: 2024/12/21 12:23:51 by dlorenzo         ###   ########.fr        #
+#    Updated: 2024/12/22 22:53:41 by dlorenzo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,8 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 OBJ = $(SRC:.c=.o)
 
 # Test environment
-# test file name
 TEST = test
-# test file source
 TEST_SRC = test.c
-# test target executable
 TEST_BIN =  $(TEST)
 
 # Rules
@@ -53,6 +50,5 @@ fclean: clean
 
 re: fclean all test
 
-# Test objective
 test: $(NAME) $(TEST_SRC)
 	$(CC) $(CFLAGS) $(TEST_SRC) $(LFLAGS) -o $(TEST_BIN)

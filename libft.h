@@ -6,15 +6,15 @@
 /*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:47:58 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/21 12:44:26 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2024/12/22 23:27:29 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>	// size_t; write; read; close;
-# include <stdlib.h>	// size_t; malloc; free; atoi; exit; NULL;
+# include <unistd.h>	// For size_t, write
+# include <stdlib.h>	// For size_t, malloc, free, NULL
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
