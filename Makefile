@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+         #
+#    By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 07:25:06 by dlorenzo          #+#    #+#              #
-#    Updated: 2024/12/22 22:53:41 by dlorenzo         ###   ########.fr        #
+#    Updated: 2025/01/05 19:52:20 by dlorenzo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
