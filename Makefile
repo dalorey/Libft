@@ -6,7 +6,7 @@
 #    By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 07:25:06 by dlorenzo          #+#    #+#              #
-#    Updated: 2025/01/05 19:52:20 by dlorenzo         ###   ########.fr        #
+#    Updated: 2025/01/05 21:05:47 by dlorenzo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 NAME = libft.a
-LFLAGS = -L. -lft
 
 # Files
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -48,7 +47,5 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(TEST_BIN)
 
-re: fclean all test
+re: fclean all
 
-test: $(NAME) $(TEST_SRC)
-	$(CC) $(CFLAGS) $(TEST_SRC) $(LFLAGS) -o $(TEST_BIN)
