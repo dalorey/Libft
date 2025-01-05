@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/05 19:40:35 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/05 23:37:22 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -808,7 +808,7 @@ int	main(void)
 
 // ft_split()
 // char **ft_split(char const *s, char c);
-
+/*
     // char const *str = NULL;
     // char const *str = "";
     // char const *str = "hello!zzzzzzzz";
@@ -836,6 +836,7 @@ int	main(void)
         i++;
     }
     free (result);
+*/
 
     // Test 1 - Input str - separator ' '
     // // printf("[main] result address of initial pointer: '%p'\n", (void *)result);
@@ -893,5 +894,32 @@ int	main(void)
     // printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
 // POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+// BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS *
+
+// ft_split()
+// t_list	*ft_lstnew(void *content);
+	char	*str = "Node 1";
+	// char	*str = NULL;
+	t_list	*node;
+
+	printf("str content: %s\n", str);
+	node = ft_lstnew((void *)str);
+	printf("Node content: %s\n", (char *) node->content);	// weird!!!
+	if (node == NULL)
+	{
+		printf("Error: ft_lstnew returned NULL\n");
+		return (1);
+	}
+	if (node->content == str)
+		printf("Success: Node content is correct\n");
+	else
+		printf("Error: Node content is incorrect\n");
+	if (node->next == NULL)
+		printf("Success: Node next is NULL\n");
+	else
+		printf("Error: Node next is not NULL\n");
+	free(node);
+
+// BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS *
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:47:58 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/05 19:08:45 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/05 23:40:44 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,13 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int num, int fd);
 char	**ft_split(char const *str, char c);
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
+t_list	*ft_lstnew(void *content);
 
 #endif
