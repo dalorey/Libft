@@ -6,13 +6,13 @@
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:25:54 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/05 23:30:26 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/05 23:52:39 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew_bonus(void *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*list;
 
