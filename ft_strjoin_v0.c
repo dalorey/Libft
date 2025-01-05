@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin_v0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 11:25:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/05 19:08:45 by dlorenzo         ###   ########.fr       */
+/*   Created: 2024/12/18 18:23:03 by dlorenzo          #+#    #+#             */
+/*   Updated: 2025/01/05 19:23:02 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdint.h>	// For SIZE_MAX
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void	*mem;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*dst;
+	size_t	len;
 
-	if (nmemb && size && (nmemb > SIZE_MAX / size))
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	dst = malloc(s1_len + s2_len + 1);
+	if (!dst)
 		return (NULL);
-	mem = malloc(nmemb * size);
-	if (!mem)
-		return (NULL);
-	ft_memset(mem, 0, nmemb * size);
-	return (mem);
+	len = ft_strlcpy(dst, s1, s1_len + 1);
+	len = ft_strlcat(dst, s2, s1_len + s2_len + 1);
+	return (dst);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlorenzo <dlorenzo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2024/12/21 23:26:45 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/05 19:40:35 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdlib.h> // atoi;
 #include <stdint.h> // SIZE_MAX;
 
+/*
 void	test_ft_memchr(const void *src, int c, size_t n)
 {
 	printf("----------------------------------------------------\n");
@@ -56,7 +57,8 @@ void test_ft_memcmp(const void *s1, const void *s2, size_t n)
     printf("memcmp estándar devuelve: %d\n", result_std);
     printf("ft_memcmp devuelve       : %d\n", result_ft);
 
-    if ((result_std == 0 && result_ft == 0) || (result_std > 0 && result_ft > 0) || (result_std < 0 && result_ft < 0)) {
+    if ((result_std == 0 && result_ft == 0) || (result_std > 0 && result_ft > 0) || (result_std < 0 && result_ft < 0))
+    {
         printf("✅ Test PASSED. Los resultados coinciden.\n");
     } else {
         printf("❌ Test FAILED. Los resultados no coinciden.\n");
@@ -93,6 +95,7 @@ void to_upper_even2(unsigned int index, char *c)
     if (index % 2 == 0)
         c[index] = (int)ft_toupper(c[index]);
 }
+*/
 
 int	main(void)
 {

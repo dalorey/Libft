@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_v0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:24:28 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/05 19:36:48 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/05 19:09:36 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ static size_t	ft_word_len(char const *str, char c, size_t index)
 static char	*ft_store_word(char const *str, size_t index, size_t len)
 {
 	char	*tmp;
+	size_t	stored_len;
 
+	stored_len = 0;
 	tmp = malloc(len + 1);
 	if (!tmp)
 	{
 		free(tmp);
 		return (NULL);
 	}
-	ft_strlcpy(tmp, str + index, len + 1);
+	stored_len = ft_strlcpy(tmp, str + index, len + 1);
 	return (tmp);
 }
 
