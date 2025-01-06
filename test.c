@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/05 23:37:22 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/06 20:33:14 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -896,29 +896,87 @@ int	main(void)
 
 // BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS *
 
-// ft_split()
+// ft_lstnew()
 // t_list	*ft_lstnew(void *content);
-	char	*str = "Node 1";
-	// char	*str = NULL;
-	t_list	*node;
+	char	*str1 = "Content #1";
+	// char	*str1 = NULL;
+	t_list	*list1;
 
-	printf("str content: %s\n", str);
-	node = ft_lstnew((void *)str);
-	printf("Node content: %s\n", (char *) node->content);	// weird!!!
-	if (node == NULL)
+	printf("\n*** [ft_lstnew] ***\n");
+	printf("str1 content: %s\n", str1);
+	list1 = ft_lstnew((void *)str1);
+	printf("List1 content: %s\n", (char *) list1->content);
+	printf("List1 next: %s\n", (char *) list1->next);
+	if (list1 == NULL)
 	{
 		printf("Error: ft_lstnew returned NULL\n");
 		return (1);
 	}
-	if (node->content == str)
+	if (list1->content == str1)
 		printf("Success: Node content is correct\n");
 	else
 		printf("Error: Node content is incorrect\n");
-	if (node->next == NULL)
+	if (list1->next == NULL)
 		printf("Success: Node next is NULL\n");
 	else
 		printf("Error: Node next is not NULL\n");
-	free(node);
+	// free (list1);
+
+// ft_lstadd_front()
+// void ft_lstadd_front(t_list **lst, t_list *new);
+	char	*str2 = "Content #2";
+	t_list	*list2;
+
+	printf("\n*** [ft_lstadd_front] ***\n");
+	printf("str2 content: %s\n", str2);
+	list2 = ft_lstnew((void *)str2);
+	printf("List2 content: %s\n", (char *) list2->content);
+	printf("List2 next: %s\n", (char *) list2->next);
+
+	ft_lstadd_front(&list1,list2);
+	printf("\nNew Node1 content: %s\n", (char *) list1->content);
+	printf("New Node2 content: %s\n", (char *) list1->next->content);
+	printf("List2 next: %s\n", (char *) list1->next->next);
+
+	// free (list1);
+
+// ft_lstsize()
+// int ft_lstsize(t_list *lst);
+	int	size;
+
+	printf("\n*** [ft_lstsize] ***\n");
+	size = ft_lstsize(list2);
+	printf("Size of List2 is: %i\n", size);
+
+	// free (list1);
+
+// ft_lstlast()
+// t_list *ft_lstlast(t_list *lst);
+	// printf("\n*** [ft_lstlast] ***\n");
+	// printf("List1 node1 content: %s\n", (char *) list1->content);
+	// list1 = ft_lstlast(list1);
+	// printf("List1 node1 new content: %s\n", (char *) list1->content);
+	// printf("List1 node1 next: %s\n", (char *) list1->next);
+
+	// free (list1);
+
+// ft_lstadd_back()
+// void ft_lstadd_back(t_list **lst, t_list *new);
+	char	*str3 = "Content #3";
+	t_list	*list3;
+
+	printf("\n*** [ft_lstadd_back] ***\n");
+	printf("str3 content: %s\n", str3);
+	list3 = ft_lstnew(str3);
+	printf("List3 content: %s\n", (char *) list3->content);
+	printf("List3 next: %s\n", (char *) list3->next);
+	ft_lstadd_back(&list1,list3);
+	printf("\nNode1 content: %s\n", (char *) list1->content);
+	printf("Node2 content: %s\n", (char *) list1->next->content);
+	printf("Node3 content: %s\n", (char *) list1->next->next->content);
+	printf("List1 next: %s\n", (char *) list1->next->next->next);
+
+	free (list1);
 
 // BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS *
 	return (0);
