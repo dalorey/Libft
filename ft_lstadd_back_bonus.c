@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:37:23 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/06 20:32:47 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/07 07:31:45 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 
 	if (*lst == NULL)
 		*lst = new;
-	last = ft_lstlast(*lst);
-	last->next = new;
+	else if (new != NULL)
+	{
+		last = ft_lstlast(*lst);
+		last->next = new;
+	}
 }

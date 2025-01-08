@@ -6,7 +6,7 @@
 /*   By: dlorenzo <dlorenzo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 07:58:52 by dlorenzo          #+#    #+#             */
-/*   Updated: 2025/01/06 20:33:14 by dlorenzo         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:54:22 by dlorenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,31 @@ void to_upper_even2(unsigned int index, char *c)
         c[index] = (int)ft_toupper(c[index]);
 }
 */
+
+void    del_content(void *content)
+{
+    if(content)
+    {
+        printf("[del_content] Content: '%s' ---\n", (char *)content);
+        free(content);
+        printf("[del_content] Content freed ---\n");
+    }
+}
+
+void    inc_val(void *content)
+{
+    if (content)
+    {
+        int *value = (int *)content;
+        (*value)++;
+    }
+}
+
+void    print_content(void *content)
+{
+    if (content)
+        printf("Content: %d\n", *(int *)content);
+}
 
 int	main(void)
 {
@@ -836,7 +861,6 @@ int	main(void)
         i++;
     }
     free (result);
-*/
 
     // Test 1 - Input str - separator ' '
     // // printf("[main] result address of initial pointer: '%p'\n", (void *)result);
@@ -877,36 +901,49 @@ int	main(void)
     //     }
     //     free(result);
     // }
-
+*/
 	// END of tests
 
 // POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    // // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
-    // //                       //     ---> CANNOT WRITE STRING AFTERWARDS
-    // char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
+/*
+    // char *str = "hello";  // STRING LITERAL - STORED IN READ ONLY MEMORY
+    //                       //     ---> CANNOT WRITE STRING AFTERWARDS
+    char str[] = "hello";    // MODIFIABLE STRING - STORED IN WRITABLE MEMORY
 
-    // printf("str: %s\n", str);     // Output: hello
+    printf("str: %s\n", str);     // Output: hello
 
-    // printf("str points to: %c\n", *str);     // Output: h
+    printf("str points to: %c\n", *str);     // Output: h
 
-    // printf("str[1]: %c\n", str[1]);          // Output: e
-    // printf("str + 1 points to: %c\n", *(str + 1)); // Output: e
-    // printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
+    printf("str[1]: %c\n", str[1]);          // Output: e
+    printf("str + 1 points to: %c\n", *(str + 1)); // Output: e
+    printf("&str[1] points to: %c\n", *(&str[1])); // Output: e
+*/
 // POINTERS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 // BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS *
 
 // ft_lstnew()
 // t_list	*ft_lstnew(void *content);
-	char	*str1 = "Content #1";
+	// char	*str1 = "Content #1"; // static - cannot be freed;
 	// char	*str1 = NULL;
+    char    *str1;
 	t_list	*list1;
 
 	printf("\n*** [ft_lstnew] ***\n");
-	printf("str1 content: %s\n", str1);
+	str1 = malloc(30 * sizeof(char));
+    if (!str1)
+        printf("Memory allocation for str4 failed\n");
+    ft_strlcpy(str1, "Content #1", 30);
+    list1 = ft_lstnew((void *)str1);
+    if (!list1)
+    {
+        printf("Memory allocation for list4 failed\n");
+        free(list1);
+    }
+    printf("str1 content: '%s'\n", str1);
 	list1 = ft_lstnew((void *)str1);
-	printf("List1 content: %s\n", (char *) list1->content);
-	printf("List1 next: %s\n", (char *) list1->next);
+	printf("[List1] content: '%s'\n", (char *) list1->content);
+	printf("[List1] next: '%s'\n", (char *) list1->next);
 	if (list1 == NULL)
 	{
 		printf("Error: ft_lstnew returned NULL\n");
@@ -924,19 +961,30 @@ int	main(void)
 
 // ft_lstadd_front()
 // void ft_lstadd_front(t_list **lst, t_list *new);
-	char	*str2 = "Content #2";
+	// char	*str2 = "Content #2";; // static - cannot be freed;
+    char *str2;
 	t_list	*list2;
 
 	printf("\n*** [ft_lstadd_front] ***\n");
-	printf("str2 content: %s\n", str2);
+    str2 = malloc(30 * sizeof(char));
+    if (!str2)
+        printf("Memory allocation for str4 failed\n");
+    ft_strlcpy(str2, "Content #2", 30);
+    list2 = ft_lstnew((void *)str2);
+    if (!list2)
+    {
+        printf("Memory allocation for list4 failed\n");
+        free(list2);
+    }
+	printf("str2 content: '%s'\n", str2);
 	list2 = ft_lstnew((void *)str2);
-	printf("List2 content: %s\n", (char *) list2->content);
-	printf("List2 next: %s\n", (char *) list2->next);
+	printf("[List2] content: '%s'\n", (char *) list2->content);
+	printf("[List2] next: '%s'\n", (char *) list2->next);
 
 	ft_lstadd_front(&list1,list2);
-	printf("\nNew Node1 content: %s\n", (char *) list1->content);
-	printf("New Node2 content: %s\n", (char *) list1->next->content);
-	printf("List2 next: %s\n", (char *) list1->next->next);
+	printf("\n[List1] New Node1 content: '%s'\n", (char *) list1->content);
+	printf("[List1] New Node2 content: '%s'\n", (char *) list1->next->content);
+	printf("[List1] Node2->next: '%s'\n", (char *) list1->next->next);
 
 	// free (list1);
 
@@ -953,10 +1001,10 @@ int	main(void)
 // ft_lstlast()
 // t_list *ft_lstlast(t_list *lst);
 	// printf("\n*** [ft_lstlast] ***\n");
-	// printf("List1 node1 content: %s\n", (char *) list1->content);
+	// printf("[List1] node1 content: %s\n", (char *) list1->content);
 	// list1 = ft_lstlast(list1);
-	// printf("List1 node1 new content: %s\n", (char *) list1->content);
-	// printf("List1 node1 next: %s\n", (char *) list1->next);
+	// printf("[List1] node1 new content: '%s'\n", (char *) list1->content);
+	// printf("[List1] node1 next: '%s'\n", (char *) list1->next);
 
 	// free (list1);
 
@@ -966,17 +1014,86 @@ int	main(void)
 	t_list	*list3;
 
 	printf("\n*** [ft_lstadd_back] ***\n");
-	printf("str3 content: %s\n", str3);
+    str3 = malloc(30 * sizeof(char));
+    if (!str3)
+        printf("Memory allocation for str4 failed\n");
+    ft_strlcpy(str3, "Content #3", 30);
+    list3 = ft_lstnew((void *)str3);
+    if (!list3)
+    {
+        printf("Memory allocation for list4 failed\n");
+        free(list3);
+    }
+	printf("str3 content: '%s'\n", str3);
 	list3 = ft_lstnew(str3);
-	printf("List3 content: %s\n", (char *) list3->content);
-	printf("List3 next: %s\n", (char *) list3->next);
+	printf("[List3] content: '%s'\n", (char *) list3->content);
+	printf("[List3]  next: '%s'\n", (char *) list3->next);
 	ft_lstadd_back(&list1,list3);
-	printf("\nNode1 content: %s\n", (char *) list1->content);
-	printf("Node2 content: %s\n", (char *) list1->next->content);
-	printf("Node3 content: %s\n", (char *) list1->next->next->content);
-	printf("List1 next: %s\n", (char *) list1->next->next->next);
+	printf("\n[List1] Node1 content: '%s'\n", (char *) list1->content);
+	printf("[List1] Node2 content: '%s'\n", (char *) list1->next->content);
+	printf("[List1] Node3 content: '%s'\n", (char *) list1->next->next->content);
+	printf("[List1] Node3->next: '%s'\n", (char *) list1->next->next->next);
 
-	free (list1);
+	// free (list1);
+
+// ft_lstdelone()
+// void	ft_lstdelone(t_list *lst, void (*del)(void*));
+    // char    *str4 = "Content #4 - to be deleted" // static - cannot be freed;
+    char    *str4;
+    t_list  *list4;
+
+    printf("\n*** [ft_lstdelone] ***\n");
+    str4 = malloc(30 * sizeof(char));
+    if (!str4)
+        printf("Memory allocation for str4 failed\n");
+    ft_strlcpy(str4, "Content #4 - to be deleted", 30);
+    list4 = ft_lstnew((void *)str4);
+    if (!list4)
+    {
+        printf("Memory allocation for list4 failed\n");
+        free(list4);
+    }
+    printf("[List4] content before deletion: '%s'\n", (char *)list4->content);
+    printf("[List4] next: '%s'\n", (char *)list4->next);
+    ft_lstdelone(list4,*del_content);
+    printf("Node deleted successfully\n");
+
+// ft_lstclear()
+// void	ft_lstclear(t_list **lst, void (*del)(void*));
+    printf("\n*** [ft_lstclear] ***\n");
+	printf("[List1] Node1 content: '%s'\n", (char *) list1->content);
+	printf("[List1] Node2 content: '%s'\n", (char *) list1->next->content);
+	printf("[List1] Node3 content: '%s'\n", (char *) list1->next->next->content);
+	printf("[List1] Node3->next: '%s'\n", (char *) list1->next->next->next);
+    ft_lstclear(&list1,*del_content);
+
+// ft_lstiter()
+// void ft_lstiter(t_list *lst, void (*f)(void *));
+    printf("\n*** [ft_lstiter] ***\n");
+    t_list  *list5 = ft_lstnew(malloc(sizeof(int)));
+    t_list  *list6 = ft_lstnew(malloc(sizeof(int)));
+    t_list  *list7 = ft_lstnew(malloc(sizeof(int)));
+    if (!list5 || !list6 || !list7)
+        printf("Error creating List5/List6/List7\n");
+    
+    *(int *)(list5->content) = 5;
+    *(int *)(list6->content) = 6;
+    *(int *)(list7->content) = 7;
+    
+    list5->next = list6;
+    list6->next = list7;
+    list7->next = NULL;
+
+    printf("Initial List5:\n");
+    ft_lstiter(list5,print_content);
+    ft_lstiter(list5,inc_val);
+    printf("Modified List5:\n");
+    ft_lstiter(list5,print_content);
+    ft_lstclear(&list5, free);
+
+// ft_lstmap()
+// t_list *ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
+
 
 // BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS * BONUS *
 	return (0);
